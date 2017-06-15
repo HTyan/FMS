@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans 
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd     
+       http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+          http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- placeholder 理解为是一种占位符的写法，应用将很多信息灵活的写在我们的配置文件 属性文件 xx.properties中读取有关数据库访问信息 
+		${key} ${driver} -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- 扫描的路径 注解 指定对应的那些包 就可以了 com.etc -->
+	<context:component-scan base-package="com.etc"></context:component-scan>
+
+
+	<!-- ①配置·数据源· 数据库连接池有关的特性 ,得到了一个bean dataSource 目的啊是要给别的bean使用的, 需要被注入给其他的bean -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<!-- 注入 name 后面的是属性名，value获取的是配置文件的中key对应的value的值 -->
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="maxActive" value="${maxActive}"></property>
+		<property name="initialSize" value="${initialSize}"></property>
+	</bean>
+
+
+	<!-- ②sqlSessionFactorybean 的配置 注入操作 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- dataSource MapperLocations -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 注意 这里的路径是 com/etc/dao/*.xml 是映射文件 -->
+		<property name="mapperLocations" value="classpath:com/etc/dao/*.xml"></property>
+	</bean>
+
+
+	<!-- ③配置的是 MapperScannerConfigurer -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- map扫描的包 -->
+		<property name="basePackage" value="com.etc.dao"></property>
+		<!-- sqlsessionFactory 如果是beanName记得类型为一个字符串 是一个value不是一个ref -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+
+	<!-- 2、 在spring的配置文件applicationContext.xml中加入一个事务管理器bean: -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 3、 加入一个注解有关的驱动: -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+
+
+</beans>
