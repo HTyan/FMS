@@ -44,7 +44,7 @@
 	<!-- ③配置的是 MapperScannerConfigurer -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- map扫描的包 -->
-		<property name="basePackage" value="com.etc.dao"></property>
+		<property name="basePackage" value="com.etc.fms.check.dao"></property>
 		<!-- sqlsessionFactory 如果是beanName记得类型为一个字符串 是一个value不是一个ref -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
