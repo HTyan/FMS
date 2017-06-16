@@ -11,7 +11,7 @@ import com.etc.fms.check.entity.Checked;
 import com.etc.fms.check.service.ICheckedService;
 
 @Controller
-public class CheckController {
+public class CheckedController {
 
 	@Resource(name = "checkedService")
 	private ICheckedService checkedService;
@@ -26,22 +26,25 @@ public class CheckController {
 
 	/**
 	 * 通过ID查找
+	 * 
 	 * @param id
 	 * @return
 	 */
 	@RequestMapping(value = "getCheckById", method = RequestMethod.GET)
-	public ModelAndView getBlogById(int id) {
-		Checked checked = checkedService.selectChecked(id);
+	public ModelAndView getCheckById(int id) {
+		Checked checked = checkedService.selectByPrimaryKey(id);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("checked", checked);
 		mv.setViewName("showChecked");
 		return mv;
 	}
-	
-/*	*//**
+
+	/**
 	 * 查找全部
+	 * 
 	 * @return
-	 *//*
+	 */
+
 	@RequestMapping(value = "getBlogAll", method = RequestMethod.GET)
 	public ModelAndView getBlogByAll() {
 		List<Blog> list = blogService.selectAllBlog();
@@ -50,51 +53,49 @@ public class CheckController {
 		mv.setViewName("showBlog");
 		return mv;
 	}
-	
-	*//**
+
+	/**
 	 * 添加单条信息
+	 * 
 	 * @param blog
 	 * @return
-	 *//*
-	@RequestMapping(value = "addBlog", method = RequestMethod.POST)
-	public ModelAndView AddBlog(Blog blog) {
-
-		boolean add= blogService.addBlog(blog);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("add", add);
-		mv.setViewName("showBlog");
-		return mv;
-	}
-	*//**
+	 */
+	/*
+	 * 
+	 * @RequestMapping(value = "addBlog", method = RequestMethod.POST) public
+	 * ModelAndView AddBlog(Blog blog) {
+	 * 
+	 * boolean add= blogService.addBlog(blog); ModelAndView mv = new
+	 * ModelAndView(); mv.addObject("add", add); mv.setViewName("showBlog");
+	 * return mv; }
+	 *//**
 	 * 删除单条信息
+	 * 
 	 * @param id
 	 * @return
-	 *//*
-	@RequestMapping(value = "deleteBlog", method = RequestMethod.GET)
-	public ModelAndView DeleteBlog(int id) {
-
-		boolean delete= blogService.deleteBlog(id);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("delete", delete);
-		mv.setViewName("showBlog");
-		return mv;
-	}
-	
-	*//**
+	 */
+	/*
+	 * 
+	 * @RequestMapping(value = "deleteBlog", method = RequestMethod.GET) public
+	 * ModelAndView DeleteBlog(int id) {
+	 * 
+	 * boolean delete= blogService.deleteBlog(id); ModelAndView mv = new
+	 * ModelAndView(); mv.addObject("delete", delete);
+	 * mv.setViewName("showBlog"); return mv; }
+	 *//**
 	 * 修改单条信息
+	 * 
 	 * @param blog
 	 * @return
-	 *//*
-	@RequestMapping(value = "updateBlog", method = RequestMethod.POST)
-	public ModelAndView UpdateBlog(Blog blog) {
-
-		boolean update= blogService.updateBlog(blog);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("update", update);
-		mv.setViewName("showBlog");
-		return mv;
-	}
-	*/
-	
+	 */
+	/*
+	 * 
+	 * @RequestMapping(value = "updateBlog", method = RequestMethod.POST) public
+	 * ModelAndView UpdateBlog(Blog blog) {
+	 * 
+	 * boolean update= blogService.updateBlog(blog); ModelAndView mv = new
+	 * ModelAndView(); mv.addObject("update", update);
+	 * mv.setViewName("showBlog"); return mv; }
+	 */
 
 }
