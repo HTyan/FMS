@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.etc.dao.EmpMapper">
-  <resultMap id="BaseResultMap" type="com.etc.entity.Emp">
+<mapper namespace="com.etc.fms.emp.dao.EmpMapper">
+  <resultMap id="BaseResultMap" type="com.etc.fms.emp.entity.Emp">
     <id column="eid" jdbcType="INTEGER" property="eid" />
     <result column="did" jdbcType="INTEGER" property="did" />
     <result column="jid" jdbcType="INTEGER" property="jid" />
@@ -27,7 +27,7 @@
     delete from emp
     where eid = #{eid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.etc.entity.Emp">
+  <insert id="insert" parameterType="com.etc.fms.emp.entity.Emp">
     insert into emp (eid, did, jid, 
       gid, ename, epassword, 
       esex, eage, eintr, 
@@ -37,7 +37,7 @@
       #{esex,jdbcType=VARCHAR}, #{eage,jdbcType=INTEGER}, #{eintr,jdbcType=VARCHAR}, 
       #{ehobby,jdbcType=VARCHAR}, #{etel,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.etc.entity.Emp">
+  <insert id="insertSelective" parameterType="com.etc.fms.emp.entity.Emp">
     insert into emp
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="eid != null">
@@ -110,7 +110,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.etc.entity.Emp">
+  <update id="updateByPrimaryKeySelective" parameterType="com.etc.fms.emp.entity.Emp">
     update emp
     <set>
       <if test="did != null">
@@ -146,7 +146,7 @@
     </set>
     where eid = #{eid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.etc.entity.Emp">
+  <update id="updateByPrimaryKey" parameterType="com.etc.fms.emp.entity.Emp">
     update emp
     set did = #{did,jdbcType=INTEGER},
       jid = #{jid,jdbcType=INTEGER},

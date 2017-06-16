@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.etc.dao.GrantedMapper">
-  <resultMap id="BaseResultMap" type="com.etc.entity.Granted">
+<mapper namespace="com.etc.fms.emp.dao.GrantedMapper">
+  <resultMap id="BaseResultMap" type="com.etc.fms.emp.entity.Granted">
     <id column="gid" jdbcType="INTEGER" property="gid" />
     <result column="gname" jdbcType="VARCHAR" property="gname" />
     <result column="gremark" jdbcType="VARCHAR" property="gremark" />
@@ -19,13 +19,13 @@
     delete from granted
     where gid = #{gid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.etc.entity.Granted">
+  <insert id="insert" parameterType="com.etc.fms.emp.entity.Granted">
     insert into granted (gid, gname, gremark
       )
     values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{gremark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.etc.entity.Granted">
+  <insert id="insertSelective" parameterType="com.etc.fms.emp.entity.Granted">
     insert into granted
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="gid != null">
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.etc.entity.Granted">
+  <update id="updateByPrimaryKeySelective" parameterType="com.etc.fms.emp.entity.Granted">
     update granted
     <set>
       <if test="gname != null">
@@ -62,7 +62,7 @@
     </set>
     where gid = #{gid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.etc.entity.Granted">
+  <update id="updateByPrimaryKey" parameterType="com.etc.fms.emp.entity.Granted">
     update granted
     set gname = #{gname,jdbcType=VARCHAR},
       gremark = #{gremark,jdbcType=VARCHAR}

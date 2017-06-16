@@ -37,7 +37,7 @@
 		<!-- dataSource MapperLocations -->
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- 注意 这里的路径是 com/etc/dao/*.xml 是映射文件 -->
-		<property name="mapperLocations" value="classpath:com/etc/fms/check/dao/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/etc/fms/check/dao/*.xml,classpath:com/etc/fms/expense/dao/*.xml,classpath:com/etc/fms/emp/dao/*.xml"></property>
 	</bean>
 
 

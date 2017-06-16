@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<!-- 指定控制器的位置-->
-	<context:component-scan base-package="com.etc.fms.check.controller"></context:component-scan> 
+	<context:component-scan base-package="com.etc.fms.check.controller,com.etc.fms.emp.controller,com.etc.fms.expense.controller"></context:component-scan> 
 
 <!-- 设置不拦截 *.html的静态资源 -->
 	<mvc:resources location="/" mapping="/*.html" />

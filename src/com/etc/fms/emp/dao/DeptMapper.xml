@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.etc.dao.DeptMapper">
-  <resultMap id="BaseResultMap" type="com.etc.entity.Dept">
+<mapper namespace="com.etc.fms.emp.fms.emp.dao.DeptMapper">
+  <resultMap id="BaseResultMap" type="com.etc.fms.emp.entity.Dept">
     <id column="did" jdbcType="INTEGER" property="did" />
     <result column="dname" jdbcType="VARCHAR" property="dname" />
   </resultMap>
@@ -18,11 +18,11 @@
     delete from dept
     where did = #{did,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.etc.entity.Dept">
+  <insert id="insert" parameterType="com.etc.fms.emp.entity.Dept">
     insert into dept (did, dname)
     values (#{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.etc.entity.Dept">
+  <insert id="insertSelective" parameterType="com.etc.fms.emp.entity.Dept">
     insert into dept
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="did != null">
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.etc.entity.Dept">
+  <update id="updateByPrimaryKeySelective" parameterType="com.etc.fms.emp.entity.Dept">
     update dept
     <set>
       <if test="dname != null">
@@ -50,7 +50,7 @@
     </set>
     where did = #{did,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.etc.entity.Dept">
+  <update id="updateByPrimaryKey" parameterType="com.etc.fms.emp.entity.Dept">
     update dept
     set dname = #{dname,jdbcType=VARCHAR}
     where did = #{did,jdbcType=INTEGER}

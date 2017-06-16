@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.etc.dao.JobMapper">
-  <resultMap id="BaseResultMap" type="com.etc.entity.Job">
+<mapper namespace="com.etc.fms.emp.dao.JobMapper">
+  <resultMap id="BaseResultMap" type="com.etc.fms.emp.entity.Job">
     <id column="jid" jdbcType="INTEGER" property="jid" />
     <result column="jname" jdbcType="VARCHAR" property="jname" />
     <result column="jremark" jdbcType="VARCHAR" property="jremark" />
@@ -19,13 +19,13 @@
     delete from job
     where jid = #{jid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.etc.entity.Job">
+  <insert id="insert" parameterType="com.etc.fms.emp.entity.Job">
     insert into job (jid, jname, jremark
       )
     values (#{jid,jdbcType=INTEGER}, #{jname,jdbcType=VARCHAR}, #{jremark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.etc.entity.Job">
+  <insert id="insertSelective" parameterType="com.etc.fms.emp.entity.Job">
     insert into job
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="jid != null">
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.etc.entity.Job">
+  <update id="updateByPrimaryKeySelective" parameterType="com.etc.fms.emp.entity.Job">
     update job
     <set>
       <if test="jname != null">
@@ -62,7 +62,7 @@
     </set>
     where jid = #{jid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.etc.entity.Job">
+  <update id="updateByPrimaryKey" parameterType="com.etc.fms.emp.entity.Job">
     update job
     set jname = #{jname,jdbcType=VARCHAR},
       jremark = #{jremark,jdbcType=VARCHAR}
