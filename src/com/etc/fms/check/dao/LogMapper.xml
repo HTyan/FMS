@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射文件 有一个 namespace  记得你的BlogMapper类放在那里这里就写那里 -->
+<mapper namespace="com.etc.fms.check.dao.LogMapper">
+
+
+	<!-- 使用了的写法 -->
+	<insert id="insertLog" parameterType="com.etc.fms.check.fms.check.entity.Log" >
+		insert into log values(#{id},#{op},#{opdate})
+	</insert>
+
+</mapper>
+
