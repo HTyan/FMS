@@ -17,7 +17,7 @@
 		${key} ${driver} -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
 	<!-- 扫描的路径 注解 指定对应的那些包 就可以了 com.etc -->
-	<context:component-scan base-package="com.etc"></context:component-scan>
+	<context:component-scan base-package="com.etc.fms"></context:component-scan>
 
 
 	<!-- ①配置·数据源· 数据库连接池有关的特性 ,得到了一个bean dataSource 目的啊是要给别的bean使用的, 需要被注入给其他的bean -->
@@ -37,7 +37,7 @@
 		<!-- dataSource MapperLocations -->
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- 注意 这里的路径是 com/etc/dao/*.xml 是映射文件 -->
-		<property name="mapperLocations" value="classpath:com/etc/dao/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/etc/fms/check/dao/*.xml"></property>
 	</bean>
 
 
