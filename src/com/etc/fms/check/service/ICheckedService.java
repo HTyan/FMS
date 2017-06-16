@@ -12,8 +12,15 @@ public interface ICheckedService {
 	 * 通过ID查询
 	 * @return
 	 */
-	public Checked selectChecked(int id);
-
+	public Checked selectByPrimaryKey(int id);
+	
+	/**
+	 * 通过部门查询
+	 * @return
+	 */
+	public Checked selectByDept(String dept);
+	
+	
 	/**
 	 * 查询全部
 	 * @return

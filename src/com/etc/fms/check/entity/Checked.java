@@ -92,4 +92,13 @@ public class Checked {
     public void setCstaus(Integer cstaus) {
         this.cstaus = cstaus;
     }
+
+	@Override
+	public String toString() {
+		return "Checked [cid=" + cid + ", eid=" + eid + ", pid=" + pid
+				+ ", rid=" + rid + ", ctitle=" + ctitle + ", ctime=" + ctime
+				+ ", ccontent=" + ccontent + ", cadvice=" + cadvice
+				+ ", cstaus=" + cstaus + "]";
+	}
+    
 }

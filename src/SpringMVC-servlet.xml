@@ -13,6 +13,13 @@
 	<!-- 指定控制器的位置-->
 	<context:component-scan base-package="com.etc.fms.check.controller"></context:component-scan> 
 
+<!-- 设置不拦截 *.html的静态资源 -->
+	<mvc:resources location="/" mapping="/*.html" />
+
+	<!-- 设置easyui有关的静态资源不被过滤 -->
+	<mvc:default-servlet-handler />
+	<!-- annotation-driven -->
+	<mvc:annotation-driven />
     <!-- 视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

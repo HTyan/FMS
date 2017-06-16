@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.etc.dao.CheckedMapper">
+<mapper namespace="com.etc.fms.check.dao.CheckedMapper">
   <resultMap id="BaseResultMap" type="com.etc.fms.check.entity.Checked">
     <id column="cid" jdbcType="INTEGER" property="cid" />
     <result column="eid" jdbcType="INTEGER" property="eid" />
@@ -12,15 +12,26 @@
     <result column="cadvice" jdbcType="VARCHAR" property="cadvice" />
     <result column="cstaus" jdbcType="INTEGER" property="cstaus" />
   </resultMap>
+  <!-- 属性值 -->
   <sql id="Base_Column_List">
     cid, eid, pid, rid, ctitle, ctime, ccontent, cadvice, cstaus
   </sql>
+  
+  <!-- 通过id查询 -->
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from checked
     where cid = #{cid,jdbcType=INTEGER}
   </select>
+  <!-- 通过部门查找 -->
+  <select id="selectByDept">
+   select 
+    <include refid="Base_Column_List" />
+    from checked,emp,dept
+    where checked.cid=emp.eid and emp.eid=dept.did and dept.dname=#{dept,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from checked
     where cid = #{cid,jdbcType=INTEGER}

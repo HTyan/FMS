@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+
 import com.etc.fms.check.dao.CheckedMapper;
-import com.etc.fms.check.dao.LogMapper;
 import com.etc.fms.check.entity.Checked;
 import com.etc.fms.check.service.ICheckedService;
 import com.etc.fms.utils.PageBean;
@@ -17,9 +17,6 @@ public class CheckedService implements ICheckedService {
 
 	@Resource(name = "checkeddao")
 	private CheckedMapper checkeddao;
-	//工作日志
-	@Resource(name = "logdao")
-	private LogMapper logdao;
 
 
 	/*@Resource可以忽略setter方法，用反射和代理，使用byName来注入*/
@@ -30,6 +27,24 @@ public class CheckedService implements ICheckedService {
 	public CheckedMapper getCheckeddao() {
 
 		return checkeddao;
+	}
+	
+	/**
+	 * 通过id查询审批表信息
+	 */
+	@Override
+	public Checked selectByPrimaryKey(int cid) {
+		// TODO Auto-generated method stub
+		return checkeddao.selectByPrimaryKey(cid);
+	}
+	
+	/**
+	 * 通过部门查询审批表信息
+	 */
+	@Override
+	public Checked selectByDept(String dept) {
+		// TODO Auto-generated method stub
+		return checkeddao.selectByDept(dept);
 	}
 	
 	@Override
@@ -62,11 +77,7 @@ public class CheckedService implements ICheckedService {
 		return null;
 	}
 	
-	@Override
-	public Checked selectChecked(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 	@Override
 	public List<Checked> selectCheckedByPage(PageBean pb) {

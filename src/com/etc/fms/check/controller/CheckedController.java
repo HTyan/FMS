@@ -40,19 +40,33 @@ public class CheckedController {
 	}
 
 	/**
+	 * 通过部门查找
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value = "getCheckByDept", method = RequestMethod.GET)
+	public ModelAndView getCheckBy(String dept) {
+		Checked checked = checkedService.selectByDept(dept);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("checked", checked);
+		mv.setViewName("showChecked");
+		return mv;
+	}
+	/**
 	 * 查找全部
 	 * 
 	 * @return
 	 */
 
-	@RequestMapping(value = "getBlogAll", method = RequestMethod.GET)
+/*	@RequestMapping(value = "getAll", method = RequestMethod.GET)
 	public ModelAndView getBlogByAll() {
 		List<Blog> list = blogService.selectAllBlog();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("showBlog");
 		return mv;
-	}
+	}*/
 
 	/**
 	 * 添加单条信息
