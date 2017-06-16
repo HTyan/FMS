@@ -5,19 +5,24 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>FMS</display-name>
 	<listener>
-		<description>Spring监听器</description>
+		<description>Spring的核心监听器</description>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<!-- ContextLoaderListener初始化Spring上下文时需要使用到的contextConfigLocation参数 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
+		<!-- 配置spring.xml和spring-mybatis.xml这两个配置文件的位置，固定写法 -->
 		<param-value>classpath*:applicationContext.xml</param-value>
 	</context-param>
+	
+	<!-- 关于springmvc的配置信息 -->
 	<servlet>
 		<servlet-name>demo01</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:demo01-servlet.xml</param-value>
+			<param-value>classpath*:SpringMVC-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -25,6 +30,8 @@
 		<servlet-name>demo01</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	 <!-- 请求编码的设置信息 -->
 	<filter>
 		<filter-name>CharacterEncoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
