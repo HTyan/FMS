@@ -1,5 +1,5 @@
 package com.etc.fms;
 
-public class test {
+public class fms_test {
 
 }
