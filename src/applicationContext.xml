@@ -37,14 +37,14 @@
 		<!-- dataSource MapperLocations -->
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- 注意 这里的路径是 com/etc/dao/*.xml 是映射文件 -->
-		<property name="mapperLocations" value="classpath:com/etc/fms/check/dao/*.xml,classpath:com/etc/fms/expense/dao/*.xml,classpath:com/etc/fms/emp/dao/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/etc/fms/company/dao/*.xml,classpath:com/etc/fms/financeinfo/dao/*.xml,classpath:com/etc/fms/user/dao/*.xml"></property>
 	</bean>
 
 
 	<!-- ③配置的是 MapperScannerConfigurer -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- map扫描的包 -->
-		<property name="basePackage" value="com.etc.fms.check.dao"></property>
+		<property name="basePackage" value="com.etc.fms.company.dao,com.etc.fms.financeinfo.dao,com.etc.fms.user.dao"></property>
 		<!-- sqlsessionFactory 如果是beanName记得类型为一个字符串 是一个value不是一个ref -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
