@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.fms.financeinfo.dao.FinanceinfoMapper">
+  <resultMap id="BaseResultMap" type="com.etc.fms.financeinfo.entity.Financeinfo">
+    <id column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="cno" jdbcType="VARCHAR" property="cno" />
+    <result column="fname" jdbcType="VARCHAR" property="fname" />
+    <result column="yishou" jdbcType="DOUBLE" property="yishou" />
+    <result column="sishou" jdbcType="DOUBLE" property="sishou" />
+    <result column="ftime" jdbcType="VARCHAR" property="ftime" />
+    <result column="ytime" jdbcType="VARCHAR" property="ytime" />
+    <result column="des" jdbcType="VARCHAR" property="des" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    fid, cid, cno, fname, yishou, sishou, ftime, ytime, des
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from financeinfo
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from financeinfo
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.etc.fms.financeinfo.entity.Financeinfo">
+    insert into financeinfo (fid, cid, cno, 
+      fname, yishou, sishou, 
+      ftime, ytime, des)
+    values (#{fid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{cno,jdbcType=VARCHAR}, 
+      #{fname,jdbcType=VARCHAR}, #{yishou,jdbcType=DOUBLE}, #{sishou,jdbcType=DOUBLE}, 
+      #{ftime,jdbcType=VARCHAR}, #{ytime,jdbcType=VARCHAR}, #{des,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.etc.fms.financeinfo.entity.Financeinfo">
+    insert into financeinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="cno != null">
+        cno,
+      </if>
+      <if test="fname != null">
+        fname,
+      </if>
+      <if test="yishou != null">
+        yishou,
+      </if>
+      <if test="sishou != null">
+        sishou,
+      </if>
+      <if test="ftime != null">
+        ftime,
+      </if>
+      <if test="ytime != null">
+        ytime,
+      </if>
+      <if test="des != null">
+        des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="fname != null">
+        #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="yishou != null">
+        #{yishou,jdbcType=DOUBLE},
+      </if>
+      <if test="sishou != null">
+        #{sishou,jdbcType=DOUBLE},
+      </if>
+      <if test="ftime != null">
+        #{ftime,jdbcType=VARCHAR},
+      </if>
+      <if test="ytime != null">
+        #{ytime,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        #{des,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etc.fms.financeinfo.entity.Financeinfo">
+    update financeinfo
+    <set>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="cno != null">
+        cno = #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="fname != null">
+        fname = #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="yishou != null">
+        yishou = #{yishou,jdbcType=DOUBLE},
+      </if>
+      <if test="sishou != null">
+        sishou = #{sishou,jdbcType=DOUBLE},
+      </if>
+      <if test="ftime != null">
+        ftime = #{ftime,jdbcType=VARCHAR},
+      </if>
+      <if test="ytime != null">
+        ytime = #{ytime,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        des = #{des,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etc.fms.financeinfo.entity.Financeinfo">
+    update financeinfo
+    set cid = #{cid,jdbcType=INTEGER},
+      cno = #{cno,jdbcType=VARCHAR},
+      fname = #{fname,jdbcType=VARCHAR},
+      yishou = #{yishou,jdbcType=DOUBLE},
+      sishou = #{sishou,jdbcType=DOUBLE},
+      ftime = #{ftime,jdbcType=VARCHAR},
+      ytime = #{ytime,jdbcType=VARCHAR},
+      des = #{des,jdbcType=VARCHAR}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>
