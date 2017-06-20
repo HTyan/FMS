@@ -34,6 +34,12 @@ public interface FinanceInfoMapper {
 	public List<FinanceInfo> getFinanceInfolist(int cid, String begintime,
 			String endtime) throws Exception;
 	
+	/**
+	 * 查询所有
+	 * @return
+	 */
+	public List<FinanceInfo> queryFinanceInfolist() ;
+	
 	public List<FBaoBiao> getFinanceBBlist(int cid, String begintime,
 			String endtime) throws Exception; //报表
 

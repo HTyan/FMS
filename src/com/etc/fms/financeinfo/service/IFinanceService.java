@@ -22,6 +22,13 @@ public interface IFinanceService {
 	 */
 	public FinanceInfo getFinanceinfo(String cno);
 	
+	
+	/**
+	 * ²éÑ¯ËùÓÐ
+	 * @return
+	 * @throws Exception
+	 */
+	public List<FinanceInfo> queryFinanceInfolist();
 	/**
 	 * 
 	 * @param cid

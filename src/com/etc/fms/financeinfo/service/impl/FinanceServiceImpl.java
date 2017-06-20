@@ -71,5 +71,14 @@ public class FinanceServiceImpl implements IFinanceService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	/**
+	 * ²éÑ¯ËùÓÐ
+	 */
+	@Override
+	public List<FinanceInfo> queryFinanceInfolist() {
+		// TODO Auto-generated method stub
+		return financeinfodao.queryFinanceInfolist();
+	}
 
 }

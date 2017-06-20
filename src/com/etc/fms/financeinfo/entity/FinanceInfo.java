@@ -18,6 +18,16 @@ public class FinanceInfo {
     private String ytime;
 
     private String des;
+    
+    public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+
+	private int flag = 0 ;
 
     public Integer getFid() {
         return fid;
@@ -90,4 +100,13 @@ public class FinanceInfo {
     public void setDes(String des) {
         this.des = des == null ? null : des.trim();
     }
+
+	@Override
+	public String toString() {
+		return "FinanceInfo [fid=" + fid + ", cid=" + cid + ", cno=" + cno
+				+ ", fname=" + fname + ", yishou=" + yishou + ", sishou="
+				+ sishou + ", ftime=" + ftime + ", ytime=" + ytime + ", des="
+				+ des + ", flag=" + flag + "]";
+	}
+    
 }

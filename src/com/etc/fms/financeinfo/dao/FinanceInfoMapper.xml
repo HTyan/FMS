@@ -12,9 +12,17 @@
     <result column="ytime" jdbcType="VARCHAR" property="ytime" />
     <result column="des" jdbcType="VARCHAR" property="des" />
   </resultMap>
+  
   <sql id="Base_Column_List">
     fid, cid, cno, fname, yishou, sishou, ftime, ytime, des
   </sql>
+  <select id="queryFinanceInfolist"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from financeinfo
+  </select>
+  
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
