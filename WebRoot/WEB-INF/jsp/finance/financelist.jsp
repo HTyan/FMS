@@ -44,7 +44,7 @@ $(function() {
 </head>
 <body>
 	<center>
-		<h2>财务预敬管理</h2>
+		<h2>财务预警管理</h2>
 		<form id="myform1" method="post" action="FinanceServlet?method=query">
 			<table width="80%" border="0">
 				<tr align="center">
@@ -83,11 +83,11 @@ $(function() {
 				<td width="10%">状态</td>
 			</tr>
 			<%
-					List list = (ArrayList) request.getAttribute("list");
-					if (list != null && list.size() > 0) {
-						for (int i = 0; i < list.size(); i++) {
-							FinanceInfo f = (FinanceInfo) list.get(i);
-				%>
+				List list = (ArrayList) request.getAttribute("list");
+							if (list != null && list.size() > 0) {
+								for (int i = 0; i < list.size(); i++) {
+									FinanceInfo f = (FinanceInfo) list.get(i);
+			%>
 			<tr align="center" <%if(f.getFlag()==1){%> bgcolor="pink" <%} %>>
 				<td><%=f.getCno()%></td>
 				<td><%=f.getFname()%></td>
