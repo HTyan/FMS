@@ -29,45 +29,45 @@ public class FinanceServiceImpl implements IFinanceService {
 	}
 
 	@Override
-	public int delFinanceinfo(int fid) throws Exception {
+	public int delFinanceinfo(int fid)  {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int delFinanceinfos(int cid) throws Exception {
+	public int delFinanceinfos(int cid) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public List<FBaoBiao> getFinanceBBlist(int cid, String begintime,
-			String endtime) throws Exception {
+			String endtime)  {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public FinanceInfo getFinanceinfo(String cno) throws Exception {
+	public FinanceInfo getFinanceinfo(String cno)  {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<FinanceInfo> getFinanceinfolist(int cid, String begintime,
-			String endtime) throws Exception {
+			String endtime) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int saveFinanceinfo(FinanceInfo f) throws Exception {
+	public int saveFinanceinfo(FinanceInfo f)  {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int updateFinance(FinanceInfo f) throws Exception {
+	public int updateFinance(FinanceInfo f)  {
 		// TODO Auto-generated method stub
 		return 0;
 	}

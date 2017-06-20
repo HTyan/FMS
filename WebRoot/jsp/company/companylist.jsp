@@ -1,5 +1,9 @@
-<%@ page language="java" import="java.util.*,com.dyc.po.*"
-	pageEncoding="UTF-8"%>
+<%@ page language="java"
+	import="java.util.*,com.etc.fms.company.entity.*" pageEncoding="UTF-8"%>
+<%@ page language="java"
+	import="java.util.*,com.etc.fms.user.entity.*" pageEncoding="UTF-8"%>
+<%@ page language="java"
+	import="java.util.*,com.etc.fms.financeinfo.entity.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -19,6 +23,7 @@
 <title>企业信息管理</title>
 <script type="text/javascript"
 	src="js/jquery-easyui-1.2.6/jquery-1.7.2.min.js">
+	
 </script>
 <link rel="stylesheet" type="text/css"
 	href="js/jquery-easyui-1.2.6/themes/default/easyui.css" />
@@ -26,38 +31,40 @@
 	href="js/jquery-easyui-1.2.6/themes/icon.css" />
 <script type="text/javascript"
 	src="js/jquery-easyui-1.2.6/jquery.easyui.min.js">
+	
 </script>
 <script type="text/javascript"
 	src="js/jquery-easyui-1.2.6/locale/easyui-lang-zh_CN.js">
+	
 </script>
 <script type="text/javascript">
-$(function() {
+	$(function() {
 
-	//字符验证组件 
-	$('#cname,#addr').validatebox( {
-		required : true,
-		missingMessage : '输入项不能为空!'
+		//字符验证组件 
+		$('#cname,#addr').validatebox({
+			required : true,
+			missingMessage : '输入项不能为空!'
+
+		});
+
+		$('#xy').numberbox({
+			required : false,
+			missingMessage : '输入必须是数字!',
+			precision : 2
+		});
+
+		$('#btn').click(function() {
+			if (!$('#myform').form('validate')) {
+				$.messager.show({
+					title : '提示信息',
+					msg : '验证没有通过,不能提交表单!'
+				});
+				return false; //当表单验证不通过的时候 必须要return false 
+			}
+
+		});
 
 	});
-	
-	$('#xy').numberbox( {
-		required : false,
-		missingMessage : '输入必须是数字!',
-		precision : 2
-	});
-	
-	$('#btn').click(function() {
-		if (!$('#myform').form('validate')) {
-			$.messager.show( {
-				title : '提示信息',
-				msg : '验证没有通过,不能提交表单!'
-			});
-			return false; //当表单验证不通过的时候 必须要return false 
-		}
-
-	});
-
-});
 </script>
 </head>
 <body>
@@ -86,32 +93,32 @@ $(function() {
 				<td width="10%">操作</td>
 			</tr>
 			<%
-					List list = (ArrayList) request.getAttribute("list");
-					if (list != null && list.size() > 0) {
-						for (int i = 0; i < list.size(); i++) {
-							Company c = (Company) list.get(i);
-				%>
+				List list = (ArrayList) request.getAttribute("list");
+				if (list != null && list.size() > 0) {
+					for (int i = 0; i < list.size(); i++) {
+						Company c = (Company) list.get(i);
+			%>
 			<tr align="center">
 				<td><%=i + 1%></td>
-				<td><%=c.getCname() %></td>
-				<td><%=c.getType() %></td>
-				<td><%=c.getAddr() %></td>
-				<td><%=c.getCxy() %></td>
-				<td><%=c.getXy() %></td>
+				<td><%=c.getCname()%></td>
+				<td><%=c.getType()%></td>
+				<td><%=c.getAddr()%></td>
+				<td><%=c.getCxy()%></td>
+				<td><%=c.getXy()%></td>
 				<td align="center"><a
-					href="CompanyServlet?cid=<%=c.getCid() %>&method=del">删除</a></td>
+					href="CompanyServlet?cid=<%=c.getCid()%>&method=del">删除</a></td>
 			</tr>
 			<%
-					}
-					} else {
-				%>
+				}
+				} else {
+			%>
 			<tr>
 				<td colspan="7" style="height: 150px; text-align: center">
 					尚没有添加企业信息！</td>
 			</tr>
 			<%
-					}
-				%>
+				}
+			%>
 		</table>
 		<br> <br> <br>
 		<form id="myform" method="post" action="CompanyServlet?method=save">

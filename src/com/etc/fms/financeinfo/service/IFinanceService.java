@@ -5,20 +5,49 @@ import java.util.List;
 import com.etc.fms.financeinfo.entity.FBaoBiao;
 import com.etc.fms.financeinfo.entity.FinanceInfo;
 
-public interface IFinanceService { //
-	public int saveFinanceinfo(FinanceInfo f) throws Exception;
-
-	public FinanceInfo getFinanceinfo(String cno) throws Exception;
-
+public interface IFinanceService { 
+	/**
+	 * 保存
+	 * @param f
+	 * @return
+	 * @throws Exception
+	 */
+	public int saveFinanceinfo(FinanceInfo f);
+	
+	/**
+	 * 
+	 * @param cno
+	 * @return
+	 * @throws Exception
+	 */
+	public FinanceInfo getFinanceinfo(String cno);
+	
+	/**
+	 * 
+	 * @param cid
+	 * @param begintime
+	 * @param endtime
+	 * @return
+	 * @throws Exception
+	 */
 	public List<FinanceInfo> getFinanceinfolist(int cid, String begintime,
 			String endtime) throws Exception;
 	
+	/**
+	 * 
+	 * @param cid
+	 * @param begintime
+	 * @param endtime
+	 * @return
+	 * @throws Exception
+	 */
 	public List<FBaoBiao> getFinanceBBlist(int cid, String begintime,
-			String endtime) throws Exception; //报表
+			String endtime) ; 
+	//报表
 
-	public int delFinanceinfos(int cid) throws Exception;
+	public int delFinanceinfos(int cid);
 	
-	public int delFinanceinfo(int fid) throws Exception;
+	public int delFinanceinfo(int fid);
 	
-	public int updateFinance(FinanceInfo f) throws Exception;
+	public int updateFinance(FinanceInfo f);
 }

@@ -10,17 +10,17 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<!-- 指定控制器的位置-->
-	<context:component-scan base-package="com.etc.fms.user.controller,com.etc.fms.financeinfo.controller"></context:component-scan> 
-
-<!-- 设置不拦截 *.html的静态资源 -->
+	<!-- 指定控制器的位置 -->
+	<context:component-scan
+		base-package="com.etc.fms.user.controller,com.etc.fms.admin.controller,com.etc.fms.financeinfo.controller"></context:component-scan>
+	<!-- 设置不拦截 *.html的静态资源 -->
 	<mvc:resources location="/" mapping="/*.html" />
 
 	<!-- 设置easyui有关的静态资源不被过滤 -->
 	<mvc:default-servlet-handler />
 	<!-- annotation-driven -->
 	<mvc:annotation-driven />
-    <!-- 视图解析器 -->
+	<!-- 视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
@@ -28,7 +28,7 @@
 		<property name="prefix" value="/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
-	
+
+
 
 </beans>
