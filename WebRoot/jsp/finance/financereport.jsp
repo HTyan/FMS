@@ -1,5 +1,9 @@
-<%@ page language="java" import="java.util.*,com.dyc.po.*"
-	pageEncoding="UTF-8"%>
+<%@ page language="java"
+	import="java.util.*,com.etc.fms.user.entity.User" pageEncoding="UTF-8"%>
+<%@ page language="java"
+	import="java.util.*,com.etc.fms.financeinfo.entity.*"%>
+<%@ page language="java"
+	import="java.util.*,com.etc.fms.company.entity.Company"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
