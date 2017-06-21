@@ -84,4 +84,14 @@ public class User {
     public void setRole(String role) {
         this.role = role == null ? null : role.trim();
     }
+
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", loginname=" + loginname + ", password="
+				+ password + ", username=" + username + ", age=" + age
+				+ ", gender=" + gender + ", tel=" + tel + ", role=" + role
+				+ "]";
+	}
+
+
 }
