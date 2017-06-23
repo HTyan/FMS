@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.etc.fms.company.entity.Company;
-import com.etc.fms.finance.conn.util.ConnectionUtil;
 import com.etc.fms.finance.dao.CompanyDao;
+import com.etc.fms.utils.ConnectionUtil;
 
 public class CompanyDaoImpl implements CompanyDao {
 
@@ -22,7 +22,7 @@ public class CompanyDaoImpl implements CompanyDao {
 	public int delCompany(int cid) throws Exception {
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("delete from finance.company where cid=?");
+				.prepareStatement("delete from fms.company where cid=?");
 		ps.setInt(1, cid);
 		int suc = ps.executeUpdate();
 		cu.close(ps);
@@ -31,7 +31,7 @@ public class CompanyDaoImpl implements CompanyDao {
 	}
 
 	public Company getCompany(String cname) throws Exception {
-		String sql = "select cid,cname,addr,type,flag,xy,cxy from finance.company where cname='"
+		String sql = "select cid,cname,addr,type,flag,xy,cxy from fms.company where cname='"
 				+ cname + "'";
 		ResultSet rs = cu.executeQuery(sql);
 		Company c = null;
@@ -51,7 +51,7 @@ public class CompanyDaoImpl implements CompanyDao {
 	}
 
 	public List<Company> getCompanys(String cname) throws Exception {
-		String sql = "select cid,cname,addr,type,flag,xy,cxy from finance.company where 1=1 ";
+		String sql = "select cid,cname,addr,type,flag,xy,cxy from fms.company where 1=1 ";
 		if (cname != null && cname.trim().length() > 0) {
 			sql += "and cname like '%" + cname + "%'";
 		}
@@ -75,7 +75,7 @@ public class CompanyDaoImpl implements CompanyDao {
 		// TODO Auto-generated method stub
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("insert into finance.company(cname,addr,type,cxy,xy)values(?,?,?,?,?)");
+				.prepareStatement("insert into fms.company(cname,addr,type,cxy,xy)values(?,?,?,?,?)");
 		ps.setString(1, c.getCname());
 		ps.setString(2, c.getAddr());
 		ps.setString(3, c.getType());
@@ -91,7 +91,7 @@ public class CompanyDaoImpl implements CompanyDao {
 		// TODO Auto-generated method stub
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("update finance.company set xy=? where cid=?");
+				.prepareStatement("update fms.company set xy=? where cid=?");
 		ps.setDouble(1,xy) ;
 		ps.setInt(2, cid) ;
 		int suc = ps.executeUpdate();
@@ -101,7 +101,7 @@ public class CompanyDaoImpl implements CompanyDao {
 	}
 
 	public Company getCompany(int cid) throws Exception {
-		String sql = "select cid,cname,addr,type,flag,xy,cxy from finance.company where cid="+cid ;
+		String sql = "select cid,cname,addr,type,flag,xy,cxy from fms.company where cid="+cid ;
 	ResultSet rs = cu.executeQuery(sql);
 	Company c = null;
 	while (rs.next()) {

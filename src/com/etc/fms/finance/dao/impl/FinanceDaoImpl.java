@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.etc.fms.finance.conn.util.ConnectionUtil;
 import com.etc.fms.finance.dao.FinanceDao;
 import com.etc.fms.financeinfo.entity.FBaoBiao;
 import com.etc.fms.financeinfo.entity.FinanceInfo;
+import com.etc.fms.utils.ConnectionUtil;
 
 public class FinanceDaoImpl implements FinanceDao {
 
@@ -23,7 +23,7 @@ public class FinanceDaoImpl implements FinanceDao {
 	public int delFinanceInfos(int cid) throws Exception {
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("delete from finance.financeinfo where cid=?");
+				.prepareStatement("delete from fms.financeinfo where cid=?");
 		ps.setInt(1, cid);
 		int suc = ps.executeUpdate();
 		cu.close(ps);
@@ -34,7 +34,7 @@ public class FinanceDaoImpl implements FinanceDao {
 	public int delFinanceInfo(int fid) throws Exception {
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("delete from finance.financeinfo where fid=?");
+				.prepareStatement("delete from fms.financeinfo where fid=?");
 		ps.setInt(1, fid);
 		int suc = ps.executeUpdate();
 		cu.close(ps);
@@ -43,7 +43,7 @@ public class FinanceDaoImpl implements FinanceDao {
 	}
 
 	public FinanceInfo getFinanceInfo(String cno) throws Exception {
-		String sql = "select fid,cid,cno,fname,yishou,sishou,ftime, ytime,des from finance.financeinfo where cno='"
+		String sql = "select fid,cid,cno,fname,yishou,sishou,ftime, ytime,des from fms.financeinfo where cno='"
 				+ cno + "'";
 		ResultSet rs = cu.executeQuery(sql);
 		FinanceInfo f = null;
@@ -66,7 +66,7 @@ public class FinanceDaoImpl implements FinanceDao {
 
 	public List<FinanceInfo> getFinanceInfolist(int cid, String begintime,
 			String endtime) throws Exception {
-		String sql = "select fid,cid,cno,fname,yishou,sishou,ftime, ytime,des from finance.financeinfo where 1=1 ";
+		String sql = "select fid,cid,cno,fname,yishou,sishou,ftime, ytime,des from fms.financeinfo where 1=1 ";
 		if (cid > 0) {
 			sql += "and cid=" + cid;
 		}
@@ -100,7 +100,7 @@ public class FinanceDaoImpl implements FinanceDao {
 	public List<FBaoBiao> getFinanceBBlist(int cid, String begintime,
 			String endtime) throws Exception {
 
-		String sql = "select cid,sum(yishou) ys,sum(sishou) sh from finance.financeinfo where 1=1 ";
+		String sql = "select cid,sum(yishou) ys,sum(sishou) sh from fms.financeinfo where 1=1 ";
 		if (cid > 0) {
 			sql += "and cid=" + cid;
 		}
@@ -128,7 +128,7 @@ public class FinanceDaoImpl implements FinanceDao {
 	public int saveFinanceInfo(FinanceInfo u) throws Exception {
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("insert into finance.financeinfo(cid,cno,fname,yishou,sishou,ftime,ytime,des)values(?,?,?,?,?,?,?,?)");
+				.prepareStatement("insert into fms.financeinfo(cid,cno,fname,yishou,sishou,ftime,ytime,des)values(?,?,?,?,?,?,?,?)");
 		ps.setInt(1, u.getCid());
 		ps.setString(2, u.getCno());
 		ps.setString(3, u.getFname());
@@ -146,7 +146,7 @@ public class FinanceDaoImpl implements FinanceDao {
 	public int updateFinance(FinanceInfo f) throws Exception {
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("update finance.financeinfo set sishou=?,ftime=?,ytime=?,des=? where cno=? and cid=?");
+				.prepareStatement("update fms.financeinfo set sishou=?,ftime=?,ytime=?,des=? where cno=? and cid=?");
 		ps.setDouble(1, f.getSishou());
 		ps.setString(2, f.getFtime());
 		ps.setString(3, f.getYtime());

@@ -31,6 +31,8 @@ public class LoginService extends HttpServlet {
 
 	public void service(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		res.setCharacterEncoding("utf-8");
 		String method = req.getParameter("method");
 		HttpSession session = req.getSession();
 		String reutrnPage = "jsp/error/error.jsp";

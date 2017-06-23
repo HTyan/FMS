@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.etc.fms.finance.conn.util.ConnectionUtil;
 import com.etc.fms.finance.dao.UserDao;
 import com.etc.fms.user.entity.User;
+import com.etc.fms.utils.ConnectionUtil;
 
 public class UserDaoImpl implements UserDao {
 
@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 
 	public User getUser(String loginname, String password) throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "select uid,loginname,username,age,tel,gender,role from finance.user where loginname='"
+		String sql = "select uid,loginname,username,age,tel,gender,role from fms.user where loginname='"
 				+ loginname + "' and password='" + password + "'";
 		ResultSet rs = cu.executeQuery(sql);
 		User u = null;
@@ -43,7 +43,7 @@ public class UserDaoImpl implements UserDao {
 	public List<User> getUsers(String lognname, String username)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "select uid,loginname,username,age,gender,tel,role from finance.user where 1=1 ";
+		String sql = "select uid,loginname,username,age,gender,tel,role from fms.user where 1=1 ";
 		if (lognname != null && lognname.trim().length() > 0) {
 			sql += "and loginname like '%" + lognname + "%'";
 		}
@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao {
 	public int saveUser(User u) throws Exception {
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("insert into finance.user(loginname, password,username,age,gender,tel,role)values(?,?,?,?,?,?,?)");
+				.prepareStatement("insert into fms.user(loginname, password,username,age,gender,tel,role)values(?,?,?,?,?,?,?)");
 		ps.setString(1, u.getLoginname());
 		ps.setString(2, u.getPassword());
 		ps.setString(3, u.getUsername());
@@ -87,7 +87,7 @@ public class UserDaoImpl implements UserDao {
 	public int delUser(int uid) throws Exception {
 		Connection con = cu.getConn();
 		PreparedStatement ps = con
-				.prepareStatement("delete from  finance.user where uid=?");
+				.prepareStatement("delete from fms.user where uid=?");
 		ps.setInt(1, uid);
 		int suc = ps.executeUpdate();
 		cu.close(ps);

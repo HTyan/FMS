@@ -40,7 +40,7 @@
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>UserSevlet</servlet-name>
+    <servlet-name>UserSevice</servlet-name>
     <servlet-class>com.etc.fms.finance.service.UserService</servlet-class>
   </servlet>
   <servlet>
@@ -65,8 +65,8 @@
 		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
   <servlet-mapping>
-    <servlet-name>UserSevlet</servlet-name>
-    <url-pattern>/UserSevlet</url-pattern>
+    <servlet-name>UserSevice</servlet-name>
+    <url-pattern>/UserSevice</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CompanyServlet</servlet-name>
@@ -79,7 +79,7 @@
    <!-- 请求编码的设置信息 -->
 	<filter>
 		<filter-name>CharactorFilter</filter-name>
-		<filter-class>com.etc.fms.finance.conn.test.CharacterEncodingFilter</filter-class>
+		<filter-class>com.etc.fms.finance.co.test.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>

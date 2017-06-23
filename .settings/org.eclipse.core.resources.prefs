@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebRoot/jsp/index.jsp=UTF-8
-encoding//src/com/etc/fms/finance/conn/test/CharacterEncodingFilter.java=UTF-8
+encoding//src/com/etc/fms/finance/co/test/CharacterEncodingFilter.java=UTF-8
 encoding//src/com/etc/fms/utils=UTF-8
+encoding//src/com/etc/fms/utils/ConnectionUtil.java=GBK
 encoding//src/com/etc/fms/utils/MailUitls.java=UTF-8
 encoding/<project>=GBK

@@ -86,11 +86,11 @@
 			<tr class="line_g hover_bg" align="center" bgcolor="lightblue">
 				<td width="5%">编号</td>
 				<td width="15%">企业名</td>
-				<td width="15%">企业性质</td>
+				<td width="12%">企业性质</td>
 				<td width="15%">企业地址</td>
 				<td width="15%">信用额度(RMB)</td>
 				<td width="15%">可用额度(RMB)</td>
-				<td width="10%">操作</td>
+				<td width="13%">操作</td>
 			</tr>
 			<%
 				List list = (ArrayList) request.getAttribute("list");
@@ -105,7 +105,8 @@
 				<td><%=c.getAddr()%></td>
 				<td><%=c.getCxy()%></td>
 				<td><%=c.getXy()%></td>
-				<td align="center"><a
+				<td align="center"><a class="easyui-linkbutton"
+				iconCls="icon-remove"
 					href="CompanyServlet?cid=<%=c.getCid()%>&method=del">删除</a></td>
 			</tr>
 			<%
